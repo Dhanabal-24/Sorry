@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>For You ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: pink;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255,255,255,0.8);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px red;
+        }
+
+        h1 {
+            color: red;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 25px;
+            background: red;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+
+        a:hover {
+            background: darkred;
+        }
+
+        /* Floating hearts */
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 20px;
+            animation: float 5s linear infinite;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>❤️ For You ❤️</h1>
+    <p>Click below to see the punishment I did to convince you 😅</p>
+
+    <!-- REPLACE THIS LINK -->
+    <a href="https://drive.google.com/file/d/1AeGN2IiH2eR8JyucRwz_0lBVocH7Yb3u/view?usp=sharing" target="_blank">
+        Click here to view 💌
+    </a>
+</div>
+
+<script>
+    // Create floating hearts
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }
+
+    setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
