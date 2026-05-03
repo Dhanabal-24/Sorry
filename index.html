@@ -3,94 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <title>For You ❤️</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
     <style>
         body {
             margin: 0;
             padding: 0;
             height: 100vh;
-            background: pink;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: Arial, sans-serif;
+            font-family: 'Pacifico', cursive;
             overflow: hidden;
+
+            /* Animated gradient background */
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffdde1, #ff758c);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .container {
             text-align: center;
-            background: rgba(255,255,255,0.8);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 0 20px red;
+            padding: 40px;
+            border-radius: 25px;
+
+            /* Glass effect */
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+
+            box-shadow: 0 0 40px rgba(255, 0, 100, 0.6);
+            animation: fadeIn 2s ease;
         }
 
         h1 {
-            color: red;
+            color: #ff004c;
+            font-size: 40px;
+
+            /* Glow effect */
+            text-shadow: 0 0 10px #ff4d6d, 0 0 20px #ff4d6d;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #ff4d6d; }
+            to { text-shadow: 0 0 25px #ff004c; }
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+            margin-top: 10px;
         }
 
         a {
             display: inline-block;
-            margin-top: 20px;
-            padding: 15px 25px;
-            background: red;
+            margin-top: 25px;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #ff004c, #ff7a7a);
             color: white;
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 50px;
             font-size: 18px;
+
+            /* Button animation */
+            animation: pulse 1.5s infinite;
+            transition: 0.3s;
         }
 
         a:hover {
-            background: darkred;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #ff004c;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
         /* Floating hearts */
         .heart {
             position: absolute;
-            color: red;
             font-size: 20px;
-            animation: float 5s linear infinite;
+            color: red;
+            animation: floatUp linear infinite;
+            opacity: 0.8;
         }
 
-        @keyframes float {
-            from {
-                transform: translateY(100vh);
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(1);
                 opacity: 1;
             }
-            to {
-                transform: translateY(-10vh);
+            100% {
+                transform: translateY(-10vh) scale(1.5);
                 opacity: 0;
             }
         }
+
+        /* Sparkles */
+        .sparkle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 3s infinite;
+        }
+
+        @keyframes sparkle {
+            0% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
     </style>
 </head>
+
 <body>
 
 <div class="container">
     <h1>❤️ For You ❤️</h1>
-    <p>Click below to see the punishment I did to convince you Gayathrii Maa😅</p>
+    <p>Click below to see the punishment I did to convince you Gayathrii Maa 😅</p>
 
-    <!-- REPLACE THIS LINK -->
-    <a href="https://drive.google.com/file/d/1AeGN2IiH2eR8JyucRwz_0lBVocH7Yb3u/view?usp=sharing" target="_blank">
+    <a href="https://drive.google.com/file/d/1AeGN2IiH2eR8JyucRwz_0lBVocH7Yb3u/preview" target="_blank">
         Click here to view my punishment 💌
     </a>
 </div>
 
 <script>
-    // Create floating hearts
     function createHeart() {
         const heart = document.createElement("div");
         heart.classList.add("heart");
         heart.innerHTML = "❤️";
         heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
         document.body.appendChild(heart);
 
-        setTimeout(() => {
-            heart.remove();
-        }, 5000);
+        setTimeout(() => heart.remove(), 6000);
     }
 
-    setInterval(createHeart, 300);
+    setInterval(createHeart, 200);
+
+    // Sparkles
+    function createSparkle() {
+        const s = document.createElement("div");
+        s.classList.add("sparkle");
+        s.style.left = Math.random() * 100 + "vw";
+        s.style.top = Math.random() * 100 + "vh";
+        document.body.appendChild(s);
+
+        setTimeout(() => s.remove(), 3000);
+    }
+
+    setInterval(createSparkle, 300);
 </script>
 
 </body>
